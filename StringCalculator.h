@@ -1,6 +1,6 @@
 int isEmptyString(const char *str) {
     // Check if the string is NULL or the first character is '\0'
-    if(input == NULL || *input == '\0')
+    if(str == NULL || *str == '\0')
     {   return 1;
 }
 }
