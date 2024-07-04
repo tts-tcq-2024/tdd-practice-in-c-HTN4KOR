@@ -1,8 +1,7 @@
 int isEmptyString(const char *str) {
     // Check if the string is NULL or the first character is '\0'
     if(input == NULL || *input == '\0')
-    {
-   return 1;
+    {   return 1;
 }
 }
 
