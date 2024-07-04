@@ -1,4 +1,4 @@
-int add(const char* intput){
+int add(const char* input){
   if (input== NULL)
   {return 0;
   }
