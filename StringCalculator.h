@@ -3,6 +3,7 @@ int isEmptyString(const char *str) {
     if(str == NULL || *str == '\0')
     {   return 1;
 }
+    return 0;
 }
 
 int add(const char* input){
