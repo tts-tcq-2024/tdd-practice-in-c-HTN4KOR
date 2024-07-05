@@ -6,7 +6,7 @@ int isEmptyString(const char *str) {
 }
 int isStringWithValue(const char *str) {
     // Check if the string is NULL or the first character is '\0'
-    if(*str == '1,2')
+    if((strstr(str, "1,2") != NULL))
     {   return 1;
 }
 }
