@@ -15,10 +15,10 @@ int containsString(const char *str) {
 }
 int add(const char* input){
     // Check if the string is NULL or the first character is '\0'
-    if(isEmptyString(input))
+ /*   if(isEmptyString(input))
     {
    return 0;
-}
+}*/
 if(containsString(input) == 1)
 {
 return 3;
