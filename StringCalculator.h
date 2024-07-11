@@ -3,6 +3,10 @@ int isEmptyString(const char *str) {
     if(str == NULL || *str == '\0')
     {   return 1;
 }
+    else
+    {
+        return 0
+            }
 }
 
 int containsString(const char *str) {
