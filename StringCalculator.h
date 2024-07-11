@@ -14,7 +14,7 @@ int containsString(const char *str) {
     char* token;
     char* rest = (char*)str;
     // Split the input string by ","
-    while ((token = strtok_r(rest, "\n ,", &rest))) {
+    while ((token = strtok_r(rest, ",", &rest))) {
         sum += atoi(token); // Convert token to integer and add to sum
     }
      return sum;
