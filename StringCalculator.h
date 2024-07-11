@@ -14,7 +14,7 @@ int containsString(const char *str) {
     char* token;
     char* rest = (char*)str;
     // Split the input string by ","
-    while ((token = strtok_r(rest, ",", &rest))) {
+    while ((token = strtok_r(rest, "\n ,", &rest))) {
         sum += atoi(token); // Convert token to integer and add to sum
     }
      return sum;
@@ -27,13 +27,13 @@ int containsString(const char *str) {
 }
 int add(const char* input){
     // Check if the string is NULL or the first character is '\0'
-   if(isEmptyString(input))
+/*   if(isEmptyString(input))
     {
    return 0;
-}
-    else{
+}*/
+   // else{
 int result = containsString(input);
 return result;
-    }
+  //  }
 return -1;
 }
