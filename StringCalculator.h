@@ -6,7 +6,7 @@ int isEmptyString(const char *str) {
     else
     {
         return -1;
-            }
+     }
 }
 
 int containsString(const char *str) {
