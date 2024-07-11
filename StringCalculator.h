@@ -6,12 +6,19 @@ int isEmptyString(const char *str) {
 }
 
 int containsString(const char *str) {
+     int sum = 0;
+    char* token;
+    // Split the input string by ","
+    while ((token = strtok_r(rest, ",", &rest))) {
+        sum += atoi(token); // Convert token to integer and add to sum
+    }
+     return sum;
     // Check if the string is exactly "1,2"
-    if (strcmp(str, "1,2") == 0) {
+  /*  if (strcmp(str, "1,2") == 0) {
         return 1; // Return 1 if string is "1,2"
     } else {
         return 0; // Return 0 if string is not "1,2"
-    }
+    }*/
 }
 int add(const char* input){
     // Check if the string is NULL or the first character is '\0'
@@ -19,9 +26,7 @@ int add(const char* input){
     {
    return 0;
 }
-if(containsString(input) == 1)
-{
-return 3;
-}
+int result = containsString(input);
+return result;
 return -1;
 }
