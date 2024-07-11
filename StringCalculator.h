@@ -8,6 +8,7 @@ int isEmptyString(const char *str) {
 int containsString(const char *str) {
      int sum = 0;
     char* token;
+    char* rest = (char*)str;
     // Split the input string by ","
     while ((token = strtok_r(rest, ",", &rest))) {
         sum += atoi(token); // Convert token to integer and add to sum
