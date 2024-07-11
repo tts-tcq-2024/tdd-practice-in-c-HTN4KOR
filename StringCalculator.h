@@ -5,7 +5,7 @@ int isEmptyString(const char *str) {
 }
     else
     {
-        return 0
+        return 0;
             }
 }
 
