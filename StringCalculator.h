@@ -5,7 +5,7 @@ int isEmptyString(const char *str) {
 }
     else
     {
-        return 0;
+        return -1;
             }
 }
 
@@ -31,7 +31,9 @@ int add(const char* input){
     {
    return 0;
 }
+    else{
 int result = containsString(input);
 return result;
+    }
 return -1;
 }
