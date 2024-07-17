@@ -1,39 +1,31 @@
-int isEmptyString(const char *str) {
-    // Check if the string is NULL or the first character is '\0'
-    if(str == NULL || *str == '\0')
-    {   return 1;
-}
-    else
-    {
-        return -1;
-     }
-}
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
-int containsString(const char *str) {
-     int sum = 0;
-    char* token;
-    char* rest = (char*)str;
-    // Split the input string by ","
-    while ((token = strtok_r(rest, ",", &rest))) {
-        sum += atoi(token); // Convert token to integer and add to sum
+int add(const char* input) {
+    int sum = 0;
+    int num = 0;
+    char delimiter = ',';
+    int customDelimiterFound = 0;
+
+    // Check for custom delimiter
+    if (input[0] == '/' && input[1] == '/') {
+        delimiter = input[2];
+        input += 3;
+        customDelimiterFound = 1;
     }
-     return sum;
-    // Check if the string is exactly "1,2"
-  /*  if (strcmp(str, "1,2") == 0) {
-        return 1; // Return 1 if string is "1,2"
-    } else {
-        return 0; // Return 0 if string is not "1,2"
-    }*/
-}
-int add(const char* input){
-    // Check if the string is NULL or the first character is '\0'
-/*   if(isEmptyString(input))
-    {
-   return 0;
-}*/
-   // else{
-int result = containsString(input);
-return result;
-  //  }
-return -1;
+
+    char* token = strtok((char*)input, customDelimiterFound ? &delimiter : ",");
+    while (token != NULL) {
+        if (strlen(token) > 0) {
+            num = atoi(token);
+            if (num <= 1000) {
+                sum += num;
+            }
+        }
+        token = strtok(NULL, customDelimiterFound ? &delimiter : ",");
+    }
+
+    return sum;
 }
