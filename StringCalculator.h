@@ -1,30 +1,38 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
+#include <stdbool.h>
 
+int add(const char* input);
+// Function to parse and compute the sum of numbers in the input string
 int add(const char* input) {
-    int sum = 0;
-    int num = 0;
-    char delimiter = ',';
-    int customDelimiterFound = 0;
-
-    // Check for custom delimiter
-    if (input[0] == '/' && input[1] == '/') {
-        delimiter = input[2];
-        input += 3;
-        customDelimiterFound = 1;
+    if (input == NULL || *input == '\0') {
+        return 0;
     }
 
-    char* token = strtok((char*)input, customDelimiterFound ? &delimiter : ",");
-    while (token != NULL) {
-        if (strlen(token) > 0) {
-            num = atoi(token);
-            if (num <= 1000) {
-                sum += num;
-            }
+    int sum = 0;
+    char delimiter = ','; // Default delimiter
+    bool customDelimiter = false;
+
+    // Check if the input starts with a custom delimiter definition
+    if (strncmp(input, "//", 2) == 0) {
+        // Extract the custom delimiter
+        delimiter = input[2];
+        // Move input past the delimiter definition
+        input = strchr(input, '\n');
+        if (input != NULL) {
+            input++; // Move past the newline character
         }
-        token = strtok(NULL, customDelimiterFound ? &delimiter : ",");
+        customDelimiter = true;
+    }
+
+    // Parse the input string for numbers and compute sum
+    const char* token = strtok((char*)input, ",\n");
+    while (token != NULL) {
+        int number = atoi(token);
+        if (number <= 1000) {
+            sum += number;
+        }
+        token = strtok(NULL, ",\n");
     }
 
     return sum;
