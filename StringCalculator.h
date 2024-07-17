@@ -17,22 +17,32 @@ int add(const char* input) {
     if (strncmp(input, "//", 2) == 0) {
         // Extract the custom delimiter
         delimiter = input[2];
-        // Move input past the delimiter definition
-        input = strchr(input, '\n');
-        if (input != NULL) {
-            input++; // Move past the newline character
-        }
+        input += 3; // Move input past the delimiter definition and '\n'
         customDelimiter = true;
     }
 
     // Parse the input string for numbers and compute sum
-    const char* token = strtok((char*)input, ",\n");
-    while (token != NULL) {
-        int number = atoi(token);
-        if (number <= 1000) {
-            sum += number;
+    while (*input != '\0') {
+        // Handle both the custom delimiter and the default delimiters (',' and '\n')
+        if (*input == delimiter || *input == '\n') {
+            input++; // Move past the delimiter
+            continue;
         }
-        token = strtok(NULL, ",\n");
+
+        // Extract and convert the number
+        int number = 0;
+        while (*input >= '0' && *input <= '9') {
+            number = number * 10 + (*input - '0');
+            input++;
+        }
+
+        // Check if the number exceeds 1000
+        if (number > 1000) {
+            continue;
+        }
+
+        // Accumulate the valid number into the sum
+        sum += number;
     }
 
     return sum;
